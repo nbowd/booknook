@@ -1,9 +1,11 @@
 import './App.css';
+import SearchBar from './components/SearchBar';
 
 function App() {
+
   return (
-    <p>Hello World</p>
-  );
+      <SearchBar />
+    );
 }
 
 export default App;
