@@ -16,9 +16,9 @@
 }
 
 .card__img{
-    width: 20rem;
+    width: 14rem;
     height: 11rem;
-    object-fit:scale-down;
+    object-fit:cover;
     display: flex;
 } 
 
@@ -67,6 +67,7 @@
 
     .card__img{
         width:100%;
+        object-fit: contain;
         height: 15rem;
     }
 }
