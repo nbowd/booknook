@@ -1,15 +1,26 @@
 import './App.css';
-import SearchBar from './components/SearchBar';
-import Button from './components/Button';
 import Card from './components/Card';
 import fakebook from './fakebook.jpeg'
+import SearchControls from './components/SearchControls';
 
 function App() {
 
     return <div>
-        <SearchBar />
-        <Button />
+        <div className="intro">
+            <h1 className="title">booknook</h1>
+            <SearchControls />    
+        </div>
         <div className='wrapper'>
+            <Card 
+                cover={fakebook}
+                title={'ur mom'}
+                author={'lole'}
+            />
+            <Card 
+                cover={fakebook}
+                title={'ur mom'}
+                author={'lole'}
+            />
             <Card 
                 cover={fakebook}
                 title={'ur mom'}

@@ -1,14 +1,9 @@
 import React from 'react'
 import Select from 'react-select'
 
-function SearchBar() {
-    const options = [
-        { value: 'horror', label: 'Horror' },
-        { value: 'sci-fi', label: 'Sci-fi' },
-        { value: 'fantasy', label: 'Fantasy' }
-    ]
+function SearchBar({options, handleChange}) {
     return (
-        <Select options={options} />
+        <Select className="search-bar" options={options} onChange={handleChange} />
     )
 }
 

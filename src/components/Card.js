@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 import './Card.css'
 
 function Card({cover, title, author}){
@@ -8,7 +9,8 @@ function Card({cover, title, author}){
             <div className="card__body">
                 <h2 className="card__title">{title}</h2>
                 <h3 className="card__author">{author}</h3>
-                <button className="card__button">More Info</button>
+                <Button className="card__button" message="More Info" />
+                {/* <button className="card__button">More Info</button> */}
             </div>
         </div>
     )
