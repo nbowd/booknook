@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+    margin-top: 1rem;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    z-index: 1;
+}
+.search-bar{
+    width: 50%;
+    margin-right: .5rem;
+    align-self: center;
+}
+
+.search-button {
+    padding: 1rem;
+    align-items: center;
+}
+
