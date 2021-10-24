@@ -17,7 +17,7 @@ function Modal({open, close, props}) {
                         <h4>{author}</h4>   
                     </div>                    
                     <p>{description}</p>
-                    <a href={link}>Link</a>
+                    <a className='shop-link' href={link}>Link</a>
                     <button className="close-modal" onClick={close}>&times;</button>
                 </div>
             </div>

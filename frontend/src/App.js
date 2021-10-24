@@ -12,11 +12,6 @@ function App() {
             <SearchControls setResults={setResults} />    
         </div>
         <div className='wrapper'>
-            {/* <Card 
-                cover={fakebook}
-                title={'ur mom'}
-                author={'lole'}
-            /> */}
             {results.map(result => 
                 <Card
                     key={result.key}
