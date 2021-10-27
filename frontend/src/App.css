@@ -1,6 +1,7 @@
 h1 {
     text-align: center;
     margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 .search{
     display: flex;
@@ -17,5 +18,9 @@ h1 {
 .search-button {
     padding: 1rem;
     align-items: center;
+}
+
+.intro{
+    margin-top: 10vh;
 }
 

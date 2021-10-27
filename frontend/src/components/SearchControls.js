@@ -60,7 +60,7 @@ function SearchControls({setResults}) {
     return (
     <div className="search">
         <SearchBar options={options} handleChange={handleChange} />
-        <Button className="search-button" message="Search Books" onClick={handleSearch}/>
+        <Button className="search-button" message="Find Books" onClick={handleSearch}/>
     </div>
     )
 }

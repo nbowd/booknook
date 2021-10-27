@@ -1,0 +1,20 @@
+.welcome{
+    width: 50%;
+    background-color: lightgray;
+    text-align: center;
+    margin: 10vh auto;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 1.5rem;
+}
+
+.get-started{
+    text-align: left;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+
+.get-started ul{
+    padding-left: 5rem;
+}

@@ -1,5 +1,6 @@
 // Start with 'npm run dev'
 const express = require('express')
+require('express-async-errors');
 const axios = require('axios')
 const cors = require('cors')
 
@@ -23,7 +24,7 @@ app.get('/api/books/', async (request, response) => {
     let maxRange = amount - 6
     const result = Math.floor(Math.random() * (maxRange))
 
-    let res = await axios.get(`http://www.openlibrary.org/subjects/${subject}.json?limit=3&offset=${result}`)
+    let res = await axios.get(`http://www.openlibrary.org/subjects/${subject}.json?limit=5&offset=${result}`)
     let data = await res.data;
     
     response.json(data.works)
