@@ -35,8 +35,10 @@ function SearchControls({setResults}) {
         'Parenting': 8174,
         'Science': 68592
     }
-    // console.log();
+
     const [selectedOption,setSelectedOption] = useState(null)
+
+    // Creates a pair containing: a url friendly version and a human friendly version
     const options = []
     Object.keys(subjects).forEach(subject => {
         options.push({value: subject.toLocaleLowerCase().replaceAll(' ', '_'), label: subject})
@@ -44,22 +46,21 @@ function SearchControls({setResults}) {
 
     const handleChange = (option) => {
         setSelectedOption(option)
-        console.log('Option selected:', option);
     }
 
     const handleSearch = async() => {
-        // console.log(selectedOption.value);
-        // const searchResults = await axios.get(`http://www.openlibrary.org/subjects/${selectedOption.value}.json?limit=5`)
-        // console.log(subjects[selectedOption.label]);
         if (!selectedOption) return null
         let request = await axios.get(baseURL, {params: {subject: selectedOption.value, amount: subjects[selectedOption.label]}})
         let res = request.data
-        setResults(res)
-        
+        setResults(res)  
     }
+    
     return (
     <div className="search">
-        <SearchBar options={options} handleChange={handleChange} />
+        <div className="search-bar-title">
+            <h2>Select a Subject:</h2>
+            <SearchBar options={options} handleChange={handleChange} />
+        </div>            
         <Button className="search-button" message="Find Books" onClick={handleSearch}/>
     </div>
     )

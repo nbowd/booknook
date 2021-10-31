@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button'
 import './Modal.css'
 
 function Modal({open, close, props}) {
@@ -7,6 +8,7 @@ function Modal({open, close, props}) {
     return (
         <>
             <div className="overlay" onClick={close}></div>
+
             <div className='modal'>
                 <div className="cover">
                     <img src={cover} alt="book cover" className='cover__full' />
@@ -17,8 +19,8 @@ function Modal({open, close, props}) {
                         <h4>{author}</h4>   
                     </div>                    
                     <p>{description}</p>
-                    <a className='shop-link' href={link}>Link</a>
-                    <button className="close-modal" onClick={close}>&times;</button>
+                    <a className='shop-link' href={link}>Purchase</a>
+                    <Button className="close-modal" onClick={close} message="&times;" />
                 </div>
             </div>
         </>
