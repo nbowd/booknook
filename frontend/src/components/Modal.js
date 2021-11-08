@@ -5,6 +5,7 @@ import './Modal.css'
 function Modal({open, close, props}) {
     if (!open) return null
     const {title, author, cover, link, description} = props
+    console.log(link);
     return (
         <>
             <div className="overlay" onClick={close}></div>
@@ -19,7 +20,7 @@ function Modal({open, close, props}) {
                         <h4>{author}</h4>   
                     </div>                    
                     <p>{description}</p>
-                    <a className='shop-link' href={link}>Purchase</a>
+                    <a className='shop-link' href={link}>{link? 'Purchase': null}</a>
                     <Button className="close-modal" onClick={close} message="&times;" />
                 </div>
             </div>

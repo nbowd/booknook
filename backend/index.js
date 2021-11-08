@@ -3,6 +3,7 @@ const express = require('express')
 require('express-async-errors');
 const axios = require('axios')
 const cors = require('cors')
+const cheerio = require('cheerio')
 
 const app = express()
 app.use(express.json())
@@ -27,7 +28,29 @@ app.get('/api/books/', async (request, response) => {
     let res = await axios.get(`http://www.openlibrary.org/subjects/${subject}.json?limit=5&offset=${result}`)
     let data = await res.data;
     
-    response.json(data.works)
+    // let tests = await axios.get(`http://cs361.calel.org/?title='American Gods'&author='Neil Gaiman'`)
+    // let okay = cheerio.load(tests.data)
+    // let closer = okay('p').text()
+    
+    // let maybe = JSON.parse(closer)
+    const bookInfo = data.works.map(work => ({key: work.key, title: work.title, author: work.authors[0]? work.authors[0].name:'Unknown'}))
+
+    for (let book of bookInfo) {
+        let rawRequest = await axios.get(`http://cs361.calel.org/?title="${book.title}"&author="${book.author !== 'Unknown'? book.author: ''}"`)
+        let loadRequest = cheerio.load(rawRequest.data)
+        let trimRequest = loadRequest('p').text()
+
+        let parsed = JSON.parse(trimRequest)
+        // parsed.title = book.title
+        // parsed.author = book.author
+        // parsed.req = `http://cs361.calel.org/?title="${book.title}"&author="${book.author !== 'Unknown'? book.author: ''}"`
+        // console.log(parsed);
+
+        book.cover = parsed.cover
+        book.vendor = parsed.vendor
+    }
+ 
+    response.json(bookInfo)
 })
 
 app.get('/api/book/', async (request, response) => {

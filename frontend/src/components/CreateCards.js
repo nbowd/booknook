@@ -10,9 +10,10 @@ function CreateCards({results}) {
             <Card
                 key={result.key}
                 id={result.key}
-                cover={fakebook}
+                cover={result.cover? result.cover: fakebook}
                 title={result.title}
-                author={result.authors[0]? result.authors[0].name: 'Unknown'}
+                author={result.author}
+                vendor={result.vendor}
             />)}
         </div>
     )

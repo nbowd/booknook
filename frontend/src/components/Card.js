@@ -4,7 +4,7 @@ import Button from "./Button";
 import Modal from "./Modal";
 import './Card.css'
 
-function Card({cover, title, author, id}){
+function Card({cover, title, author, id, vendor}){
     const [isOpen, setIsOpen] = useState(false)
     const [ModalProps, setModalProps] = useState({})
 
@@ -15,7 +15,7 @@ function Card({cover, title, author, id}){
             title:title,
             cover:cover,
             description: request.data.description? request.data.description.value: "No Description Available",
-            link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+            link: vendor
         })
         setIsOpen(true)
     }
