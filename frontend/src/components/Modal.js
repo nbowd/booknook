@@ -14,15 +14,19 @@ function Modal({open, close, props}) {
                 <div className="cover">
                     <img src={cover} alt="book cover" className='cover__full' />
                 </div>
+
                 <div className="info">
                     <div className="heading">
                         <h2>{title}</h2> 
                         <h4>{author}</h4>   
-                    </div>                    
+                    </div>
+                                        
                     <p>{description}</p>
                     <a className='shop-link' href={link}>{link? 'Purchase': null}</a>
+
                     <Button className="close-modal" onClick={close} message="&times;" />
                 </div>
+
             </div>
         </>
     )

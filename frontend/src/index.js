@@ -1,3 +1,4 @@
+// Start with 'npm start' requires backend node server running for functionality
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

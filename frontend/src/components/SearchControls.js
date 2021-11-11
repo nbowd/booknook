@@ -6,6 +6,8 @@ import axios from 'axios'
 
 function SearchControls({setResults}) {
     const baseURL = 'http://localhost:3001/api/books'
+    
+    // Hardcoded to avoid having to make a separate call for this value.
     const subjects = {
         'Fantasy': 12442,
         'Science Fiction':15253,
