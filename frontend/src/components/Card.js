@@ -9,21 +9,23 @@ function Card({cover, title, author, id, vendor}){
     const [ModalProps, setModalProps] = useState({})
 
     const openModal = async () => {
-        let request = await axios.get('http://localhost:3001/api/book', {params: {id: id}})
+        let request = await axios.get('http://localhost:3001/api/book', {params: {id: id, title:title, author:author}})
+        console.log(request);
         setModalProps({
             author:author,
             title:title,
             cover:cover,
-            description: request.data.description? request.data.description.value: "No Description Available",
-            link: vendor
+            description: request.data.description.description? request.data.description.description.value: "No Description Available",
+            link: request.data.vendor
         })
         setIsOpen(true)
     }
 
     return(
         <div className="card">
-            <img src={cover} alt="Cover for the book" className="card__img" />
-
+            <div className="card__img-bg">
+                <img src={cover} alt="Cover for the book" className="card__img" />
+            </div>
             <div className="card__body">
                 <h2 className="card__title">{title}</h2>
                 <h3 className="card__author">{author}</h3>

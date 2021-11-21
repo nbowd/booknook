@@ -1,0 +1,8 @@
+.search-button {
+    font-size: 1.25rem;
+    font-weight: bolder;
+    white-space: wrap;
+    width: 6rem;
+    background-color: var(--secondary-bg-color);
+    border: 1px solid gray;
+}

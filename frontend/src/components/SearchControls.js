@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './SearchControls.css'
 import SearchBar from './SearchBar'
 import Button from './Button'
 import axios from 'axios'
@@ -27,12 +28,9 @@ function SearchControls({setResults}) {
         'Art':65208,
         'Self-help':3799,
         'History': 1639606,
-        'Travel': 55114,
         'True Crime': 1138,
         'Humor': 20240,
         'Essays': 3603,
-        'Guide / How to': 557,
-        'Religion':71494,
         'Humanities':3560,
         'Parenting': 8174,
         'Science': 68592

@@ -5,11 +5,11 @@ function Welcome() {
     return (
         <div className='welcome'>
             <div>
-                <p>Welcome to booknook!</p>
+                <p>Welcome to Booknook!</p>
                 <p>Get book recommendations for dozens of subjects</p>
             </div>
             <div className='get-started'>
-                <p>Get started by:</p>
+                <p>Getting Started:</p>
                 <ul>
                     <li>Type or scroll through the subjects list</li>
                     <li>Click 'Find Books' to get results</li>

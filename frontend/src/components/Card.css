@@ -7,17 +7,20 @@
 }
 
 .card {
-    box-shadow: 0 0 6px 3px gray;
+    box-shadow: 0 0 4px 3px #282828;
+    border: 1px solid black;
     border-radius: 3px;
     min-width: 28rem;
     display: flex;
     position: relative;
+    background-color: var(--secondary-bg-color);
+    color: var(--font-dark-color);
 }
 
 .card__img{
     width: 14rem;
     height: 11rem;
-    margin-top: .5rem;
+    margin: .25rem 0;
     object-fit:cover;
     display: flex;
 } 
@@ -39,24 +42,29 @@
 
 .card__author{
     line-height: 1.2rem;
+    color: #606060;
 
 }
 
 .card__button{
     border:none;
-    border-top: 1px solid gray;
+    border-top: 1px solid black;
     background-color: transparent;
     font-size: 1rem;
     font-weight: bold;
-    color: inherit;
-    width: 90%;
+    background-color: #606060;
+    color: var(--font-light-color);
+    width: 100%;
     padding-top: 1rem;
     padding-bottom: 1rem;
     cursor: pointer;
     margin: auto;
     position:relative;
+    transition: .2s;
+}
 
-
+.card__button:hover {
+    color: gray;
 }
 
 @media screen and (min-width:600px){
@@ -68,10 +76,14 @@
         text-align: center;
         min-width: 14rem;
     }
-
+    .card__img-bg{
+        background-color: black;
+        object-fit: cover;
+        border-bottom: 1px solid gray;
+    }
     .card__img{
         width:100%;
-        object-fit: contain;
+        object-fit:contain;
         height: 15rem;
     }
 }
