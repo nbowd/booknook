@@ -6,7 +6,7 @@ import axios from 'axios'
 
 
 function SearchControls({setResults}) {
-    const baseURL = 'http://localhost:3001/api/books'
+    const baseURL = 'https://try-booknook.herokuapp.com/api/books'
     
     // Hardcoded to avoid having to make a separate call for this value.
     const subjects = {
