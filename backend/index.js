@@ -8,6 +8,7 @@ const cheerio = require('cheerio')
 const app = express()
 app.use(express.json())
 app.use(cors())
+app.use(express.static('build'))
 
 app.get('/api/books/', async (request, response) => {
     let subject = request.query.subject
@@ -18,7 +19,6 @@ app.get('/api/books/', async (request, response) => {
 
     let res = await axios.get(`http://www.openlibrary.org/subjects/${subject}.json?limit=10&offset=${result}`)
     let data = await res.data;
-    console.log(data);
     const bookInfo = data.works.map(work => ({key: work.key, title: work.title, author: work.authors[0]? work.authors[0].name:'Unknown', cover: work.cover_id?`https://covers.openlibrary.org/b/id/${work.cover_id}-L.jpg`: null}))
     
     // Teammates Service

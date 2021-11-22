@@ -9,8 +9,7 @@ function Card({cover, title, author, id, vendor}){
     const [ModalProps, setModalProps] = useState({})
 
     const openModal = async () => {
-        let request = await axios.get('http://localhost:3001/api/book', {params: {id: id, title:title, author:author}})
-        console.log(request);
+        let request = await axios.get('/api/book', {params: {id: id, title:title, author:author}})
         setModalProps({
             author:author,
             title:title,
