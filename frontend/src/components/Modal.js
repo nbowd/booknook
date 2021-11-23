@@ -20,7 +20,7 @@ function Modal({open, close, props}) {
                         <h4>{author}</h4>   
                     </div>
                                         
-                    <p>{description? description: <><div className="skeleton skeleton-text"></div><div className="skeleton skeleton-text"></div><div className="skeleton skeleton-text"></div><div className="skeleton skeleton-text"></div></>}</p>
+                    <div>{description? <p>{description}</p>: <><div className="skeleton skeleton-text"></div><div className="skeleton skeleton-text"></div><div className="skeleton skeleton-text"></div><div className="skeleton skeleton-text"></div></>}</div>
                     <a className='shop-link' href={link}>{link? 'Purchase': null}</a>
 
                     <Button className="close-modal" onClick={close} message="&times;" />

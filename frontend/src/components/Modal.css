@@ -4,7 +4,7 @@
     left:50%;
     transform: translate(-50%,-50%);
     background-color: var(--secondary-bg-color);
-    padding: 14px 28px;
+    padding: 14px 38px 14px 14px;
     border-radius: 3px;
     max-width: 1000px;
     min-width: 300px;
@@ -73,7 +73,7 @@
     position: absolute;
     top: .125rem;
     right: .5rem;
-    padding: 5px 7px;
+    padding: 3px 3px;
     font-size: 2rem;
     border: none;
     background: transparent;

@@ -57,7 +57,7 @@ app.get('/api/book/', async (request, response) => {
     const [detailsResponse, linkResponse] = await Promise.all([findDescription(), findLink()])
     
     let bookDetails = detailsResponse.data;      
-
+    console.log(bookDetails);
     let loadRequest = cheerio.load(linkResponse.data)
     let trimRequest = loadRequest('p').text()
     let parsed = JSON.parse(trimRequest)
