@@ -87,3 +87,18 @@
         height: 15rem;
     }
 }
+
+@media screen and (min-width:1200px){
+    .wrapper{
+        grid-template-columns: repeat(5, minmax(14rem, 16rem));
+    }
+}
+@media screen and (min-width:1800px){
+    .wrapper{
+        grid-template-columns: repeat(5, minmax(18rem, 22rem));
+    }
+    .card {
+        font-size: 1.25rem;
+        min-width: 18rem;
+    }
+}

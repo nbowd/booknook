@@ -46,7 +46,6 @@ app.get('/api/book/', async (request, response) => {
     let title = request.query.title
     let author = request.query.author
 
-
     let findDescription = () => {
         let res = axios.get(`http://www.openlibrary.org${id}`)
         return res
@@ -55,17 +54,18 @@ app.get('/api/book/', async (request, response) => {
         let res = axios.get(`http://cs361.calel.org/?title="${title}"&author="${author !== 'Unknown'? author: ''}"`)
         return res
     }
-    const [descResponse, linkResponse] = await Promise.all([findDescription(), findLink()])
+    const [detailsResponse, linkResponse] = await Promise.all([findDescription(), findLink()])
     
-    let description = descResponse.data;      
-    
+    let bookDetails = detailsResponse.data;      
+
     let loadRequest = cheerio.load(linkResponse.data)
     let trimRequest = loadRequest('p').text()
     let parsed = JSON.parse(trimRequest)
 
     let vendor = parsed.vendor
     // response.json(data)
-    response.json({description, vendor})
+    
+    response.json({bookDetails, vendor})
 })
 
 const PORT = process.env.PORT || 3001

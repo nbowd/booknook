@@ -9,15 +9,25 @@ function Card({cover, title, author, id, vendor}){
     const [ModalProps, setModalProps] = useState({})
 
     const openModal = async () => {
+        setModalProps({
+            author:author,
+            title:title,
+            cover:cover
+        })
+        setIsOpen(true)
         let request = await axios.get('/api/book', {params: {id: id, title:title, author:author}})
         setModalProps({
             author:author,
             title:title,
             cover:cover,
-            description: request.data.description.description? request.data.description.description.value: "No Description Available",
+            description: parseDescription(request.data.bookDetails),
             link: request.data.vendor
         })
-        setIsOpen(true)
+    }
+    const parseDescription = (details) => {
+        if (!details.description) {return "No Description Found"}
+        else if (details.description.value) {return details.description.value}
+        else {return details.description}
     }
 
     return(
