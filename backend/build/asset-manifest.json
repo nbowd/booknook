@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.4b50d90c.chunk.css",
-    "main.js": "/static/js/main.567e6d20.chunk.js",
-    "main.js.map": "/static/js/main.567e6d20.chunk.js.map",
+    "main.css": "/static/css/main.9a730b48.chunk.css",
+    "main.js": "/static/js/main.12564445.chunk.js",
+    "main.js.map": "/static/js/main.12564445.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.296e4253.js",
     "runtime-main.js.map": "/static/js/runtime-main.296e4253.js.map",
-    "static/js/2.aa9cdae6.chunk.js": "/static/js/2.aa9cdae6.chunk.js",
-    "static/js/2.aa9cdae6.chunk.js.map": "/static/js/2.aa9cdae6.chunk.js.map",
+    "static/js/2.11865000.chunk.js": "/static/js/2.11865000.chunk.js",
+    "static/js/2.11865000.chunk.js.map": "/static/js/2.11865000.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.4b50d90c.chunk.css.map": "/static/css/main.4b50d90c.chunk.css.map",
-    "static/js/2.aa9cdae6.chunk.js.LICENSE.txt": "/static/js/2.aa9cdae6.chunk.js.LICENSE.txt",
-    "static/media/default_book_cover.c095fa1f.jpeg": "/static/media/default_book_cover.c095fa1f.jpeg"
+    "static/css/main.9a730b48.chunk.css.map": "/static/css/main.9a730b48.chunk.css.map",
+    "static/js/2.11865000.chunk.js.LICENSE.txt": "/static/js/2.11865000.chunk.js.LICENSE.txt",
+    "static/media/default_book_cover.eca8f2f5.jpeg": "/static/media/default_book_cover.eca8f2f5.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.296e4253.js",
-    "static/js/2.aa9cdae6.chunk.js",
-    "static/css/main.4b50d90c.chunk.css",
-    "static/js/main.567e6d20.chunk.js"
+    "static/js/2.11865000.chunk.js",
+    "static/css/main.9a730b48.chunk.css",
+    "static/js/main.12564445.chunk.js"
   ]
 }
