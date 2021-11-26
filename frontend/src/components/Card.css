@@ -1,3 +1,7 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+
 .wrapper {
     margin:2rem;
     display:grid;
@@ -9,12 +13,14 @@
 .card {
     box-shadow: 0 0 4px 3px #282828;
     border: 1px solid black;
+    font-size: 1rem;
     border-radius: 3px;
     min-width: 28rem;
     display: flex;
     position: relative;
     background-color: var(--secondary-bg-color);
     color: var(--font-dark-color);
+    transition: 200ms ease-in-out;
 }
 
 .card__img{
@@ -42,7 +48,7 @@
 
 .card__author{
     line-height: 1.2rem;
-    color: #606060;
+    color: var(--dark-gray);
 
 }
 
@@ -52,7 +58,7 @@
     background-color: transparent;
     font-size: 1rem;
     font-weight: bold;
-    background-color: #606060;
+    background-color: var(--dark-gray);
     color: var(--font-light-color);
     width: 100%;
     padding-top: 1rem;

@@ -1,6 +1,6 @@
 .welcome{
     width: 50%;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--light-gray);
     text-align: center;
     margin: 10vh auto;
     padding: 10px;

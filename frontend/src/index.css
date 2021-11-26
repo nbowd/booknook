@@ -1,9 +1,11 @@
 :root {
-  --main-bg-color: #28afb0;
-  --secondary-bg-color: beige;
-  --accent-bg-color: #e6e18f;
+  --main-bg-color: beige;
+  --secondary-bg-color: white;
+  --light-gray: #c4c4c4;
+  --dark-gray: #606060;
   --font-light-color: white;
   --font-dark-color: black;
+  --link-color: blue;
 }
 *,
 *::before,
@@ -11,8 +13,11 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+  font-family: 'Roboto', sans-serif;
 }
 body {
   background-color: var(--main-bg-color);
 }
-a {color:blue}
+a {
+  color: var(--link-color)
+}

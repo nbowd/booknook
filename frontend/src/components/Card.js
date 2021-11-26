@@ -24,6 +24,12 @@ function Card({cover, title, author, id, vendor}){
             link: request.data.vendor
         })
     }
+
+    if (isOpen) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
     const parseDescription = (details) => {
         if (!details.description) {return "No Description Found"}
         else if (details.description.value) {return details.description.value}
