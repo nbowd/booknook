@@ -16,7 +16,10 @@ function Welcome() {
                     <li>Click 'More Info' to see a book description and shopping link</li>
                 </ul>
             </div>
-            <div>To ensure fresh results, each selection is taken from a random sample of books tagged with that subject.</div>
+            <div>
+                To ensure fresh results, each selection is taken from a 
+                random sample of books tagged with that subject.
+            </div>
         </div>
     )
 }

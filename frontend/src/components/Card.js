@@ -4,7 +4,7 @@ import Button from "./Button";
 import Modal from "./Modal";
 import './Card.css'
 
-function Card({cover, title, author, id, vendor}){
+function Card({cover, title, author, id}){
     const [isOpen, setIsOpen] = useState(false)
     const [ModalProps, setModalProps] = useState({})
 
@@ -15,7 +15,12 @@ function Card({cover, title, author, id, vendor}){
             cover:cover
         })
         setIsOpen(true)
-        let request = await axios.get('/api/book', {params: {id: id, title:title, author:author}})
+        let request = await axios.get('/api/book', 
+            {params: {
+                id: id, 
+                title:title, 
+                author:author
+            }})
         setModalProps({
             author:author,
             title:title,
@@ -30,6 +35,7 @@ function Card({cover, title, author, id, vendor}){
     } else {
         document.body.classList.remove('active-modal')
     }
+    
     const parseDescription = (details) => {
         if (!details.description) {return "No Description Found"}
         else if (details.description.value) {return details.description.value}
