@@ -2,6 +2,7 @@
 A book recommendation application utilizing microservices. \
 Frontend built with React, backend built with Node/JavaScript.
 
+<u>Live version:</u> https://try-booknook.herokuapp.com/ \
 <u>Running Locally:</u> 
 <ol>
 

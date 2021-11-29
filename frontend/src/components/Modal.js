@@ -6,12 +6,13 @@ import BookDescription from './BookDescription'
 function Modal({open, close, props}) {
     if (!open) return null
     const {title, author, cover, link, description} = props
+
     return (
         <>
             <div className="overlay" onClick={close}></div>
 
             <div className='modal'>
-
+                
                 <div className="cover">
                     <img src={cover} alt="book cover" className='cover__full' />
                 </div>
@@ -26,7 +27,7 @@ function Modal({open, close, props}) {
                     <div className="modal-body">
                         <BookDescription description={description}/>
                     </div>
-                    
+
                     <div>
                         {link?
                             <a className='shop-link' title={link} href={link} target="_blank" rel="no noreferrer">

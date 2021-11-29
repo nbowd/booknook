@@ -26,7 +26,6 @@ function SearchControls({setResults}) {
                 subject: selectedOption.value, 
                 amount: subjects[selectedOption.label]
             }})
-        // let res = request.data
         setResults(response.data)  
     }
     
@@ -35,8 +34,9 @@ function SearchControls({setResults}) {
         <div className="search-bar-title">
             <h2>Select a Subject:</h2>
             <SearchBar options={options} handleChange={handleChange} />
-        </div>            
-        <Button className="search-button" message="Find Books" onClick={handleSearch}/>
+        </div>
+
+        <Button className="search-button" onClick={handleSearch} message="Find Books"/>
     </div>
     )
 }
