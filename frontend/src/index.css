@@ -1,8 +1,23 @@
+:root {
+  --main-bg-color: beige;
+  --secondary-bg-color: white;
+  --light-gray: #c4c4c4;
+  --dark-gray: #606060;
+  --font-light-color: white;
+  --font-dark-color: black;
+  --link-color: blue;
+}
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Roboto', sans-serif;
 }
-a {color:blue}
+body {
+  background-color: var(--main-bg-color);
+}
+a {
+  color: var(--link-color)
+}

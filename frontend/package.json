@@ -9,6 +9,7 @@
     "axios": "^0.23.0",
     "dotenv": "^10.0.0",
     "react": "^17.0.2",
+    "react-autosize-textarea": "^7.1.0",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "react-select": "^5.1.0",
@@ -21,6 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",

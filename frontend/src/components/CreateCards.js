@@ -1,5 +1,5 @@
 import React from 'react'
-import defaultCover from '../default_book_cover.jpeg'
+import defaultCover from '../assets/default_book_cover.jpeg'
 import Card from './Card'
 
 
@@ -13,7 +13,6 @@ function CreateCards({results}) {
                 cover={result.cover? result.cover: defaultCover}
                 title={result.title}
                 author={result.author}
-                vendor={result.vendor}
             />)}
         </div>
     )

@@ -7,9 +7,9 @@ import CreateCards from './components/CreateCards';
 function App() {
     const [results, setResults] = useState(null) 
  
-    return <div>
+    return <div id='app'>
         <div className="intro">
-            <h1 className="title">booknook</h1>
+            <h1 className="title">Booknook</h1>
             <SearchControls setResults={setResults} />    
         </div>
 

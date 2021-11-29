@@ -1,0 +1,15 @@
+.search-button {
+    font-size: 1.25rem;
+    font-weight: bolder;
+    white-space: wrap;
+    width: 6rem;
+    background-color: var(--light-gray);
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    color: gray;
+}
+
+
