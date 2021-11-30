@@ -4,12 +4,15 @@
     white-space: wrap;
     width: 6rem;
     background-color: var(--light-gray);
+    transition: 200ms ease-in-out;
+    border-radius: 3px;
     border: 1px solid gray;
     cursor: pointer;
 }
 
 .search-button:hover {
-    color: gray;
+    color: var(--font-light-color);
+    background-color: black;
 }
 
 

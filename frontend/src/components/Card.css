@@ -59,6 +59,7 @@ body.active-modal {
     font-size: 1rem;
     font-weight: bold;
     background-color: var(--dark-gray);
+    transition: 200ms ease-in-out;
     color: var(--font-light-color);
     width: 100%;
     padding-top: 1rem;
@@ -66,11 +67,11 @@ body.active-modal {
     cursor: pointer;
     margin: auto;
     position:relative;
-    transition: .2s;
 }
 
 .card__button:hover {
-    color: gray;
+    color: white;
+    background-color: black;
 }
 
 @media screen and (min-width:600px){
