@@ -61,8 +61,9 @@ app.get('/api/book/', async (request, response) => {
 
     let bookDetails = detailsResponse.data; 
     let vendor = parsed.vendor
-    
-    response.json({bookDetails, vendor})
+    let cover = parsed.cover
+    if (vendor && cover) {response.json({bookDetails, vendor, cover})}
+    else {response.json({bookDetails, vendor: cover})}
 })
 
 const PORT = process.env.PORT || 3001

@@ -1,5 +1,4 @@
 import React from 'react'
-import defaultCover from '../assets/default_book_cover.jpeg'
 import Card from './Card'
 
 
@@ -10,7 +9,7 @@ function CreateCards({results}) {
             <Card
                 key={result.key}
                 id={result.key}
-                cover={result.cover? result.cover: defaultCover}
+                cover={result.cover}
                 title={result.title}
                 author={result.author}
             />)}

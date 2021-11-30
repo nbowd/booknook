@@ -3,6 +3,8 @@ import axios from "axios";
 import Button from "./Button";
 import Modal from "./Modal";
 import './Card.css'
+import defaultCover from '../assets/default_book_cover.jpeg'
+
 
 function Card({cover, title, author, id}){
     const [isOpen, setIsOpen] = useState(false)
@@ -12,7 +14,7 @@ function Card({cover, title, author, id}){
         setModalProps({
             author:author,
             title:title,
-            cover:cover
+            cover: cover? cover:defaultCover,
         })
         setIsOpen(true)
         let request = await axios.get('/api/book', 
@@ -21,10 +23,15 @@ function Card({cover, title, author, id}){
                 title:title, 
                 author:author
             }})
+        let findCover = () => {
+            if (cover) {return cover}
+            else if (request.data.cover) {return request.data.cover}
+            else {return defaultCover}
+        }
         setModalProps({
             author:author,
             title:title,
-            cover:cover,
+            cover: findCover(),
             description: parseDescription(request.data.bookDetails),
             link: request.data.vendor
         })
@@ -45,7 +52,7 @@ function Card({cover, title, author, id}){
     return(
         <div className="card">
             <div className="card__img-bg">
-                <img src={cover} alt="Cover for the book" className="card__img" />
+                <img src={cover?cover:defaultCover} alt="Cover for the book" className="card__img" />
             </div>
             <div className="card__body">
                 <h2 className="card__title">{title}</h2>
