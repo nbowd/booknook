@@ -9,6 +9,7 @@ import defaultCover from '../assets/default_book_cover.jpeg'
 function Card({cover, title, author, id}){
     const [isOpen, setIsOpen] = useState(false)
     const [ModalProps, setModalProps] = useState({})
+    const [currentCover, setCurrentCover] = useState(cover)
 
     const openModal = async () => {
         setModalProps({
@@ -25,7 +26,10 @@ function Card({cover, title, author, id}){
             }})
         let findCover = () => {
             if (cover) {return cover}
-            else if (request.data.cover) {return request.data.cover}
+            else if (request.data.cover) {
+                setCurrentCover(request.data.cover)
+                return request.data.cover
+            }
             else {return defaultCover}
         }
         setModalProps({
@@ -52,7 +56,7 @@ function Card({cover, title, author, id}){
     return(
         <div className="card">
             <div className="card__img-bg">
-                <img src={cover?cover:defaultCover} alt="Cover for the book" className="card__img" />
+                <img src={currentCover?currentCover:defaultCover} alt="Cover for the book" className="card__img" />
             </div>
             <div className="card__body">
                 <h2 className="card__title">{title}</h2>
