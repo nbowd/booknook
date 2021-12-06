@@ -1,4 +1,3 @@
-// Start with 'npm run dev' for auto-restart on file save
 const express = require('express')
 require('express-async-errors');
 const axios = require('axios')
