@@ -1,0 +1,29 @@
+http://localhost:3001/api/saved
+
+
+###
+POST http://localhost:3001/api/saved
+Content-Type: application/json
+
+{
+    "title": "now ",
+    "author": "asdf",
+    "cover": "jpeg",
+    "description": "Hopefully",
+    "link": "youtubes",
+    "user": "61b187d49c602f5e2b96aa04"
+}
+
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "books": [],
+    "username": "testuser",
+    "name": "test",
+    "password": "test"
+}
+
+###
+http://localhost:3001/api/users

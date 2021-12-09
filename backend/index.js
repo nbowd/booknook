@@ -1,8 +1,13 @@
+require('dotenv').config()
 const express = require('express')
 require('express-async-errors');
 const axios = require('axios')
 const cors = require('cors')
 const cheerio = require('cheerio')
+const Book = require('./models/book')
+const usersRouter = require('./controllers/users')
+const User = require('./models/user')
+
 
 const app = express()
 app.use(express.json())
@@ -64,6 +69,68 @@ app.get('/api/book/', async (request, response) => {
     if (vendor && cover) {response.json({bookDetails, vendor, cover})}
     else {response.json({bookDetails, vendor: cover})}
 })
+
+app.get('/api/saved', async (request, response) => {  
+    const books = await Book.find({}).populate('user', { username: 1, name: 1 })
+    response.json(books)
+  })
+
+app.get('/api/saved/:id', (request, response) => {
+  Book.findById(request.params.id)
+    .then(book => {
+        if (book) {
+        response.json(book)
+        } else {
+        response.status(404).end()
+        }
+    })
+    .catch(error => {
+        console.log(error)
+        response.status(400).send({ error: 'malformatted id' })
+    })
+})
+
+app.post('/api/saved', async (request,response) => {
+    const {title, author, cover, link, description} = request.body
+
+    if (title === undefined) {
+        return response.status(400).json({ error: 'title missing' })
+    }
+
+    const user = await User.findById(request.body.user)
+
+    const book = new Book({
+        title: title,
+        author: author,
+        cover: cover,
+        description: description,
+        link: link,
+        date: new Date(),
+        user: user._id
+    })
+
+    const savedBook = await book.save()
+
+    // Adds book id to users individual list
+    user.books = user.books.concat(savedBook._id)
+    await user.save()
+    response.json(savedBook)
+})
+
+app.delete('/api/saved/:id', (request, response, next) => {
+    Book.findByIdAndRemove(request.params.id)
+      .then(result => {
+        response.status(204).end()
+      })
+      .catch(error => next(error))
+})
+
+app.use('/api/users', usersRouter)
+
+const unknownEndpoint = (request, response) => {
+    response.status(404).send({ error: 'unknown endpoint' })
+  }
+app.use(unknownEndpoint)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {

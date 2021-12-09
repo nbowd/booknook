@@ -2,11 +2,16 @@ import React from 'react'
 import Button from './Button'
 import './Modal.css'
 import BookDescription from './BookDescription'
+import axios from 'axios'
 
 function Modal({open, close, props}) {
     if (!open) return null
     const {title, author, cover, link, description} = props
 
+    const saveBook = async () => {
+        const result = await axios.post('/api/saved', {title, author, cover, link, description})
+        console.log(result);
+    }
     return (
         <>
             <div className="overlay" onClick={close}></div>
@@ -35,6 +40,7 @@ function Modal({open, close, props}) {
                             </a>
                         :null
                         }
+                        <button className='save shop-link' onClick={()=>saveBook()}>Save</button>
                     </div>
 
                     <Button className="close-modal" onClick={close} message="&times;" />
