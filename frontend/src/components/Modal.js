@@ -6,12 +6,16 @@ import axios from 'axios'
 
 function Modal({open, close, props}) {
     if (!open) return null
-    const {title, author, cover, link, description} = props
+    const {title, author, cover, link, description, token} = props
 
     const saveBook = async () => {
-        const result = await axios.post('/api/saved', {title, author, cover, link, description})
-        console.log(result);
+        await axios.post('/api/saved', {title, author, cover, link, description}, config)
     }
+    
+    const config = {
+        headers: {Authorization: `bearer ${token.token}`}
+    }
+
     return (
         <>
             <div className="overlay" onClick={close}></div>

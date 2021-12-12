@@ -6,7 +6,7 @@ import './Card.css'
 import defaultCover from '../assets/default_book_cover.jpeg'
 
 
-function Card({cover, title, author, id}){
+function Card({cover, title, author, id, token}){
     const [isOpen, setIsOpen] = useState(false)
     const [ModalProps, setModalProps] = useState({})
     const [currentCover, setCurrentCover] = useState(cover)
@@ -16,6 +16,7 @@ function Card({cover, title, author, id}){
             author:author,
             title:title,
             cover: cover? cover:defaultCover,
+            token:token
         })
         setIsOpen(true)
         let request = await axios.get('/api/book', 
@@ -37,7 +38,8 @@ function Card({cover, title, author, id}){
             title:title,
             cover: findCover(),
             description: parseDescription(request.data.bookDetails),
-            link: request.data.vendor
+            link: request.data.vendor,
+            token:token
         })
     }
 

@@ -7,6 +7,8 @@ const cheerio = require('cheerio')
 const Book = require('./models/book')
 const usersRouter = require('./controllers/users')
 const User = require('./models/user')
+const loginRouter = require('./controllers/login')
+const jwt = require('jsonwebtoken')
 
 
 const app = express()
@@ -90,15 +92,29 @@ app.get('/api/saved/:id', (request, response) => {
     })
 })
 
+const getTokenFrom = request => {
+    const authorization = request.get('authorization')
+    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+      return authorization.substring(7)
+    }
+    return null
+}
+
 app.post('/api/saved', async (request,response) => {
     const {title, author, cover, link, description} = request.body
-
+    console.log(request.body);
     if (title === undefined) {
         return response.status(400).json({ error: 'title missing' })
     }
 
-    const user = await User.findById(request.body.user)
-
+    const token = getTokenFrom(request)
+    console.log(token);
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    const user = await User.findById(decodedToken.id)    
+    console.log(user)
     const book = new Book({
         title: title,
         author: author,
@@ -126,6 +142,7 @@ app.delete('/api/saved/:id', (request, response, next) => {
 })
 
 app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })

@@ -6,10 +6,10 @@ POST http://localhost:3001/api/saved
 Content-Type: application/json
 
 {
-    "title": "now ",
-    "author": "asdf",
-    "cover": "jpeg",
-    "description": "Hopefully",
+    "title": "new",
+    "author": "tests",
+    "cover": "please",
+    "description": "be nice",
     "link": "youtubes",
     "user": "61b187d49c602f5e2b96aa04"
 }
@@ -27,3 +27,12 @@ Content-Type: application/json
 
 ###
 http://localhost:3001/api/users
+
+###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "root",
+    "password": "bowdenn"
+}

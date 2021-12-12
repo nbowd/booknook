@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card'
 
 
-function CreateCards({results}) {
+function CreateCards({results, token}) {
     return (
         <div className='wrapper'>
             {results.map(result => 
@@ -12,6 +12,7 @@ function CreateCards({results}) {
                 cover={result.cover}
                 title={result.title}
                 author={result.author}
+                token={token}
             />)}
         </div>
     )

@@ -4,6 +4,11 @@ h1 {
     font-size: 3rem;
     font-weight: bolder;
 }
+
+.login-form {
+   display: flex;
+   justify-content: center;
+}
 .search{
     display: flex;
     justify-content: center;
