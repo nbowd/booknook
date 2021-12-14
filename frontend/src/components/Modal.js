@@ -13,7 +13,7 @@ function Modal({open, close, props}) {
     }
     
     const config = {
-        headers: {Authorization: `bearer ${token.token}`}
+        headers: {Authorization: `bearer ${token?token.token:null}`}
     }
 
     return (

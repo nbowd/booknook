@@ -2,11 +2,12 @@ const mongoose = require('mongoose')
 
 
 const userSchema = new mongoose.Schema({
-  username: {
+  email: {
     type: String,
-    minlength: 4
+    minlength: 4,
+    unique: true
   },
-  name: String,
+  username: String,
   passwordHash: String,
   books: [
     {
@@ -26,6 +27,7 @@ userSchema.set('toJSON', {
     delete returnedObject.passwordHash
   }
 })
+
 
 const User = mongoose.model('User', userSchema)
 

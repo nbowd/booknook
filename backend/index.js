@@ -73,7 +73,7 @@ app.get('/api/book/', async (request, response) => {
 })
 
 app.get('/api/saved', async (request, response) => {  
-    const books = await Book.find({}).populate('user', { username: 1, name: 1 })
+    const books = await Book.find({}).populate('user', { email: 1, username: 1 })
     response.json(books)
   })
 
@@ -113,8 +113,8 @@ app.post('/api/saved', async (request,response) => {
     if (!token || !decodedToken.id) {
       return response.status(401).json({ error: 'token missing or invalid' })
     }
-    const user = await User.findById(decodedToken.id)    
-    console.log(user)
+    const user = await User.findById(decodedToken.id)   
+
     const book = new Book({
         title: title,
         author: author,
