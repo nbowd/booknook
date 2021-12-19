@@ -1,8 +1,15 @@
+require('dotenv').config()
 const express = require('express')
 require('express-async-errors');
 const axios = require('axios')
 const cors = require('cors')
 const cheerio = require('cheerio')
+const Book = require('./models/book')
+const usersRouter = require('./controllers/users')
+const User = require('./models/user')
+const loginRouter = require('./controllers/login')
+const jwt = require('jsonwebtoken')
+
 
 const app = express()
 app.use(express.json())
@@ -64,6 +71,90 @@ app.get('/api/book/', async (request, response) => {
     if (vendor && cover) {response.json({bookDetails, vendor, cover})}
     else {response.json({bookDetails, vendor: cover})}
 })
+
+app.get('/api/saved', async (request, response) => {  
+    const books = await Book.find({}).populate('user', { email: 1, username: 1 })
+    response.json(books)
+  })
+
+app.get('/api/saved/:id', (request, response) => {
+  Book.findById(request.params.id)
+    .then(book => {
+        if (book) {
+        response.json(book)
+        } else {
+        response.status(404).end()
+        }
+    })
+    .catch(error => {
+        console.log(error)
+        response.status(400).send({ error: 'Malformatted id' })
+    })
+})
+
+const getTokenFrom = request => {
+    const authorization = request.get('authorization')
+    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+      return authorization.substring(7)
+    }
+    return null
+}
+
+app.post('/api/saved', async (request,response) => {
+    const {title, author, cover, link, description, key} = request.body
+    if (title === undefined) {
+        return response.status(400).json({ error: 'Title missing' })
+    }
+
+    const token = getTokenFrom(request)
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'Token missing or invalid' })
+    }
+    const user = await User.findById(decodedToken.id)   
+    
+    const book = new Book({
+        title: title,
+        author: author,
+        cover: cover,
+        description: description,
+        link: link,
+        key: key,
+        date: new Date(),
+        user: user._id
+    })
+    try {
+        const savedBook = await book.save()
+
+        // Adds book id to users individual list
+        user.books = user.books.concat(savedBook._id)
+        await user.save()
+        response.json(savedBook)
+    } catch (error) {
+        return response.status(401)
+    }
+})
+
+app.delete('/api/saved/:id', (request, response, next) => {
+    const token = getTokenFrom(request)
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'Token missing or invalid' })
+    }
+    Book.findByIdAndRemove(request.params.id)
+      .then(result => {
+        response.status(204).end()
+      })
+      .catch(error => next(error))
+})
+
+app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
+
+const unknownEndpoint = (request, response) => {
+    response.status(404).send({ error: 'Unknown endpoint' })
+  }
+app.use(unknownEndpoint)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {

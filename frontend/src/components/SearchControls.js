@@ -5,7 +5,7 @@ import Button from './Button'
 import axios from 'axios'
 import {subjects} from '../assets/subjects'
 
-function SearchControls({setResults}) {
+function SearchControls({setResults,user}) {
     const baseURL = '/api/books'
     const [selectedOption,setSelectedOption] = useState(null)
 
@@ -28,6 +28,11 @@ function SearchControls({setResults}) {
             }})
         setResults(response.data)  
     }
+
+    const handleSaved = async () => {
+        let response = await axios.get(`/api/users/${user.id}`, {params:{id: user.id}})
+        if (response) {setResults(response.data)}
+    }
     
     return (
     <div className="search">
@@ -37,6 +42,7 @@ function SearchControls({setResults}) {
         </div>
 
         <Button className="search-button" onClick={handleSearch} message="Find Books"/>
+        {user? <Button className="search-button find-books" message="Saved Books" onClick={handleSaved}/>:null}
     </div>
     )
 }

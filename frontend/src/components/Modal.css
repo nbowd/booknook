@@ -5,10 +5,10 @@
     transform: translate(-50%,-50%);
     background-color: var(--main-bg-color);
     border-radius: 5px;
+    width:60%;
     max-width: 62.5rem;
     min-width: 18.75rem;
     display: flex;
-    width: 60%;
     z-index: 1000;
 }
 
@@ -24,7 +24,6 @@
 
 .heading {
     padding-bottom: .25rem;
-    margin-bottom: 2rem;
     border-bottom: 1px solid black;
 }
 
@@ -81,9 +80,79 @@
     top: .125rem;
     right: .5rem;
     padding: .19rem .19rem;
+    transition: 200ms ease-in-out;
     font-size: 2rem;
     border: none;
     outline:none;
     background: transparent;
     cursor: pointer;
+}
+.close-modal:hover {
+    color: var(--dark-gray);
+}
+
+.error {
+    color: red;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 5%;
+  }
+
+#login-modal {
+    width:auto;
+}
+.login-form{
+    width: 300px;
+    margin-top: 1rem;
+}
+
+.login-form button {
+    margin-top: 1rem;
+}
+
+.login-form form div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: .125rem;
+}
+
+@media screen and (min-height:1400px) {
+    .heading {
+        margin-top: .5rem;
+        font-size: 2rem;
+    }
+
+    .shop-link {
+        font-size: 2rem;
+        width: 7rem;
+    }
+    .heading h3 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .close-modal {
+        font-size: 3.5rem;
+    }
+    .modal__title {
+        margin-bottom: 1rem;
+    }
+    .modal {
+        width:60%;
+        max-width: 162.5rem;
+        min-width: 68.75rem;
+    }
+    .cover__full{
+        max-height: 70rem;
+        max-width: 40rem;
+        margin-right: 1rem;
+        min-height: 60rem;
+        margin: 0.875rem;
+    }
 }

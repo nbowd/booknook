@@ -15,4 +15,9 @@
     background-color: black;
 }
 
+.find-books {
+    background-color: var(--dark-gray);
+    color: var(--font-light-color)
+}
+
 
