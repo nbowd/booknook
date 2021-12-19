@@ -6,20 +6,20 @@ function Welcome() {
         <div className='welcome'>
             <div>
                 <p>Welcome to Booknook!</p>
-                <p>Get book recommendations for dozens of subjects</p>
+                <p>Get unique book recommendations for dozens of subjects</p>
             </div>
             <div className='get-started'>
                 <p>Getting Started:</p>
                 <ul>
                     <li>Type or scroll through the subjects list</li>
                     <li>Click 'Find Books' to get results</li>
-                    <li>Click 'More Info' to see a book description and shopping link</li>
+                    <li>Click 'More Info' to see a book description, shopping link, and save options</li>
                 </ul>
             </div>
             <div>
-                To ensure fresh results, each selection is taken from a 
-                random sample of books tagged with that subject.
+                Register an account to save a book for later. While logged in, click 'Saved Books' to view/delete the user's saved selections.
             </div>
+  
         </div>
     )
 }

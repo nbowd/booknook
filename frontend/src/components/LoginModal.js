@@ -27,8 +27,9 @@ function LoginModal({open, close, props}) {
         else {
             try {
                 await axios.post('/api/users', {email, username, password})
-            } catch (exception) {
-                displayMessage('Invalid username')
+                await handleLogin()
+            } catch (error) {
+                displayMessage(error.response.data.error)
             }
         }
     }
@@ -66,13 +67,10 @@ function LoginModal({open, close, props}) {
         <>
             <div className="overlay" onClick={modalClose}></div>
 
-            <div className='modal'>
+            <div className='modal' id='login-modal'>
                 <div className="info">
                     <div className="heading">
                         {modalType}
-                    </div>
-                    <div className="errorMsg">
-                        <Notification message={errorMessage} style={{color:'green'}} />
                     </div>
                     <div className='login-form'>
                         <form onSubmit={modalType === 'Login'? handleLogin: handleRegister}>
@@ -119,7 +117,10 @@ function LoginModal({open, close, props}) {
                                 </div>
                             
                             :null}
-                            <button type="submit">{modalType}</button>
+                            <div className="errorMsg">
+                                <Notification message={errorMessage} style={{color:'green'}} />
+                            </div>
+                            <button id='login-modal-btn' className='login-btns' type="submit">{modalType}</button>
                         </form>
                     </div>       
                 </div>

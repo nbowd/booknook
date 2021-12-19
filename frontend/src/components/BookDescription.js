@@ -11,7 +11,7 @@ function BookDescription({description}) {
             <div style={{display:'table'}}>
                 { description? 
                 <div style={{display: 'table-cell', verticalAlign: 'middle'}}>
-                    <TextareaAutosize className="description" rows={2} maxRows={15} readOnly value={description}/>
+                    <TextareaAutosize style={{'maxHeight': '1000px'}} className="description" rows={2} maxRows={15} readOnly value={description}/>
                 </div>
                 : 
                 <>

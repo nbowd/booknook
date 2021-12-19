@@ -88,7 +88,7 @@ app.get('/api/saved/:id', (request, response) => {
     })
     .catch(error => {
         console.log(error)
-        response.status(400).send({ error: 'malformatted id' })
+        response.status(400).send({ error: 'Malformatted id' })
     })
 })
 
@@ -101,39 +101,46 @@ const getTokenFrom = request => {
 }
 
 app.post('/api/saved', async (request,response) => {
-    const {title, author, cover, link, description} = request.body
-    console.log(request.body);
+    const {title, author, cover, link, description, key} = request.body
     if (title === undefined) {
-        return response.status(400).json({ error: 'title missing' })
+        return response.status(400).json({ error: 'Title missing' })
     }
 
     const token = getTokenFrom(request)
-    console.log(token);
     const decodedToken = jwt.verify(token, process.env.SECRET)
     if (!token || !decodedToken.id) {
-      return response.status(401).json({ error: 'token missing or invalid' })
+      return response.status(401).json({ error: 'Token missing or invalid' })
     }
     const user = await User.findById(decodedToken.id)   
-
+    
     const book = new Book({
         title: title,
         author: author,
         cover: cover,
         description: description,
         link: link,
+        key: key,
         date: new Date(),
         user: user._id
     })
+    try {
+        const savedBook = await book.save()
 
-    const savedBook = await book.save()
-
-    // Adds book id to users individual list
-    user.books = user.books.concat(savedBook._id)
-    await user.save()
-    response.json(savedBook)
+        // Adds book id to users individual list
+        user.books = user.books.concat(savedBook._id)
+        await user.save()
+        response.json(savedBook)
+    } catch (error) {
+        return response.status(401)
+    }
 })
 
 app.delete('/api/saved/:id', (request, response, next) => {
+    const token = getTokenFrom(request)
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'Token missing or invalid' })
+    }
     Book.findByIdAndRemove(request.params.id)
       .then(result => {
         response.status(204).end()
@@ -145,7 +152,7 @@ app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
 const unknownEndpoint = (request, response) => {
-    response.status(404).send({ error: 'unknown endpoint' })
+    response.status(404).send({ error: 'Unknown endpoint' })
   }
 app.use(unknownEndpoint)
 

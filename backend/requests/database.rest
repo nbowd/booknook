@@ -29,6 +29,9 @@ Content-Type: application/json
 http://localhost:3001/api/users
 
 ###
+http://localhost:3001/api/users/61b6d2610cc2ecccef8d72f6
+
+###
 POST http://localhost:3001/api/login
 Content-Type: application/json
 
@@ -36,3 +39,8 @@ Content-Type: application/json
     "email": "nckbwdn@gmail.com",
     "password": "vicfirth22"
 }
+
+###
+DELETE http://localhost:3001/api/saved/61b92fbcf065b73b2cc6d866
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ja2J3ZG5AZ21haWwuY29tIiwiaWQiOiI2MWI2ZDI2MTBjYzJlY2NjZWY4ZDcyZjYiLCJpYXQiOjE2Mzk1NDIzNzksImV4cCI6MTYzOTU0NTk3OX0.Yi-6I3PY8cx97LMkrugvrUvx_cSVv3PjgrTx8ohg9PI

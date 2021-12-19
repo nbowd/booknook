@@ -43,3 +43,12 @@
         background-color: hsl(200, 20%,95%);
     }
 }
+
+@media screen and (min-height:1400px) {
+    .description, .description__heading {
+        font-size: 2rem;
+    }
+    .description {
+        min-width: 3rem;
+    }
+}

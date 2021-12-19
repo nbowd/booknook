@@ -18,6 +18,10 @@ const bookSchema = new mongoose.Schema({
     cover: String,
     description: String,
     link: String,
+    key: {
+      type: String,
+      unique:true
+    },
     date: Date,
     user: {
       type: mongoose.Schema.Types.ObjectId,
