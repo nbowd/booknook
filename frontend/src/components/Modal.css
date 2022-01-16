@@ -1,158 +1,226 @@
-.modal{
-    position: fixed;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background-color: var(--main-bg-color);
-    border-radius: 5px;
-    width:60%;
-    max-width: 62.5rem;
-    min-width: 18.75rem;
-    display: flex;
-    z-index: 1000;
+.modal {
+  position: fixed;
+  display: flex;
+
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--main-bg-color);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+
+  z-index: 1000;
 }
 
-.info{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0.875rem 2.375rem 0.875rem 0.875rem;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.875rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.login-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#login-heading {
+  margin: 1rem 0 0 0;
 }
 
 .heading {
-    padding-bottom: .25rem;
-    border-bottom: 1px solid black;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid black;
 }
 
 .modal-body {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 1rem;
 }
 
 .cover {
-    background-color: black;
-    border-radius: 0.3rem 0 0 0.3rem;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  border-radius: 0.3rem 0 0 0.3rem;
+  width: 100%;
+  max-height: 40%;
 }
-.shop-link{
-    text-decoration: none;
-    font-size: 1rem;
-    width: 5rem;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: var(--dark-gray);
-    transition: 200ms ease-in-out;
-    border-radius: 15px;
-    padding: .25rem .5rem;
-    color: var(--font-light-color);
+
+.shop-link {
+  text-decoration: none;
+  font-size: 1rem;
+  width: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--dark-gray);
+  transition: 200ms ease-in-out;
+  border-radius: 15px;
+  padding: 0.25rem 0.5rem;
+  color: var(--font-light-color);
 }
 
 .shop-link:hover {
-    background-color: black;
+  background-color: black;
 }
 
-.cover__full{
-    max-height: 35rem;
-    max-width: 20rem;
-    margin-right: 1rem;
-    min-height: 30rem;
-    margin: 0.875rem;
-    
+.cover__full {
+  max-height: 26rem;
+  max-width: 20rem;
+  margin-right: 1rem;
+  /* min-height: 30rem; */
+  margin: 0.875rem;
 }
 
-.overlay{
-    position: fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-color: rgba(0,0,0,0.8);
-    z-index: 1000;
-    cursor: pointer;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  cursor: pointer;
+}
+#login-modal .close-modal {
+  color: black;
 }
 
 .close-modal {
-    position: absolute;
-    top: .125rem;
-    right: .5rem;
-    padding: .19rem .19rem;
-    transition: 200ms ease-in-out;
-    font-size: 2rem;
-    border: none;
-    outline:none;
-    background: transparent;
-    cursor: pointer;
+  color: white;
+  position: absolute;
+  top: 0.125rem;
+  right: 0.5rem;
+  padding: 0.19rem 0.19rem;
+  transition: 200ms ease-in-out;
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
 }
 .close-modal:hover {
-    color: var(--dark-gray);
+  color: var(--dark-gray);
 }
 
 .error {
-    color: red;
-    background: lightgrey;
-    font-size: 20px;
-    border-style: solid;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 5%;
-  }
+  color: red;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 5%;
+}
 
 #login-modal {
-    width:auto;
+  width: 100%;
+  height: auto;
 }
-.login-form{
-    width: 300px;
-    margin-top: 1rem;
+.login-form {
+  margin: 1rem;
 }
 
 .login-form button {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .login-form form div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.125rem;
+}
+
+@media screen and (min-width: 600px) {
+  #login-modal {
+    width: auto;
+  }
+  .login-form {
+    width: 300px;
+    margin-top: 1rem;
+  }
+
+  .login-form button {
+    margin-top: 1rem;
+  }
+
+  .login-form form div {
     display: flex;
     justify-content: space-between;
-    margin-top: .125rem;
+    margin-top: 0.125rem;
+  }
+  .modal {
+    width: 60%;
+    flex-direction: row;
+    height: initial;
+    max-width: 62.5rem;
+    min-width: 18.75rem;
+  }
+  .info {
+    height: initial;
+  }
+  .cover {
+    display: initial;
+    justify-self: unset;
+    max-height: unset;
+    width: initial;
+    max-height: initial;
+  }
+
+  .cover__full {
+    max-height: 35rem;
+    min-height: 30rem;
+  }
+
+  .close-modal {
+    color: initial;
+  }
 }
 
-@media screen and (min-height:1400px) {
-    .heading {
-        margin-top: .5rem;
-        font-size: 2rem;
-    }
+/* @media screen and (min-width: 1400px) {
+  .heading {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+  }
 
-    .shop-link {
-        font-size: 2rem;
-        width: 7rem;
-    }
-    .heading h3 {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
+  .shop-link {
+    font-size: 2rem;
+    width: 7rem;
+  }
+  .heading h3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 
-    .close-modal {
-        font-size: 3.5rem;
-    }
-    .modal__title {
-        margin-bottom: 1rem;
-    }
-    .modal {
-        width:60%;
-        max-width: 162.5rem;
-        min-width: 68.75rem;
-    }
-    .cover__full{
-        max-height: 70rem;
-        max-width: 40rem;
-        margin-right: 1rem;
-        min-height: 60rem;
-        margin: 0.875rem;
-    }
-}
+  .close-modal {
+    font-size: 3.5rem;
+  }
+  .modal__title {
+    margin-bottom: 1rem;
+  }
+  .modal {
+    width: 60%;
+    max-width: 162.5rem;
+    min-width: 68.75rem;
+  }
+  .cover__full {
+    max-height: 70rem;
+    max-width: 40rem;
+    margin-right: 1rem;
+    min-height: 60rem;
+    margin: 0.875rem;
+  }
+} */

@@ -8,14 +8,17 @@ body.active-modal {
   grid-template-columns: 1fr;
   justify-content: center;
   background-color: black;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
+  width: 100%;
 }
 
 .card {
   box-shadow: 0 0 4px 3px #282828;
   border: 1px solid black;
+  border-right: none;
   font-size: 1rem;
   border-radius: 3px;
+  width: 100%;
   /* display: flex; */
   position: relative;
   background-color: var(--secondary-bg-color);
@@ -34,12 +37,12 @@ body.active-modal {
   display: flex;
 }
 .card__text {
-  margin: 1rem;
+  text-align: center;
+  margin: 1rem 0 1rem 0;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  text-align: center;
 }
 
 .card__title {
@@ -76,10 +79,12 @@ body.active-modal {
 @media screen and (min-width: 600px) {
   .wrapper {
     grid-template-columns: repeat(auto-fit, minmax(14rem, 16rem));
-    margin: 2rem;
+    /* margin: 1rem; */
     background-color: inherit;
   }
   .card {
+    border: 1px solid black;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
