@@ -40,7 +40,7 @@ function SearchControls({setResults,user}) {
             <h2>Select a Subject:</h2>
             <SearchBar options={options} handleChange={handleChange} />
         </div>
-
+        
         <Button className="search-button" onClick={handleSearch} message="Find Books"/>
         {user? <Button className="search-button find-books" message="Saved Books" onClick={handleSaved}/>:null}
     </div>
