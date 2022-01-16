@@ -49,6 +49,7 @@ form {
   justify-content: center;
   margin-top: 1rem;
   z-index: 1;
+  align-items: flex-end;
 }
 .search-bar-title {
   width: 50%;

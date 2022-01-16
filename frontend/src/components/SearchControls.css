@@ -1,23 +1,37 @@
 .search-button {
-    font-size: 1.25rem;
-    font-weight: bolder;
-    white-space: wrap;
-    width: 6rem;
-    background-color: var(--light-gray);
-    transition: 200ms ease-in-out;
-    border-radius: 3px;
-    border: 1px solid gray;
-    cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: bolder;
+  white-space: wrap;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--light-gray);
+  transition: 200ms ease-in-out;
+  border-radius: 3px;
+  border: 1px solid gray;
+  cursor: pointer;
+  margin-right: 0.25rem;
 }
 
 .search-button:hover {
-    color: var(--font-light-color);
-    background-color: black;
+  color: var(--font-light-color);
+  background-color: black;
 }
 
 .find-books {
-    background-color: var(--dark-gray);
-    color: var(--font-light-color)
+  background-color: var(--dark-gray);
+  color: var(--font-light-color);
 }
 
+@media screen and (min-width: 600px) {
+  .search-button {
+    font-size: 1.25rem;
+    width: 6rem;
+    height: 6rem;
+  }
 
+  .find-books {
+    font-size: 1.25rem;
+    width: 6rem;
+    height: 6rem;
+  }
+}
