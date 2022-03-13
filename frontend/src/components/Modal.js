@@ -67,11 +67,6 @@ function Modal({open, close, props}) {
                         :null
                         }
                         {userButton()}
-                        {/* {isSaved?
-                            <button className='delete shop-link' onClick={()=>deleteBook()}>Delete</button>
-                        :
-                            <button className='save shop-link' onClick={()=>saveBook()}>Save</button>
-                        } */}
                     </div>
 
                     <Button className="close-modal" onClick={close} message="&times;" />

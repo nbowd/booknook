@@ -5,18 +5,20 @@ import axios from 'axios';
 import loginService from '../services/login';
 import Notification from './Notification';
 
-function LoginModal({ open, close, props }) {
+function LoginModal({ open, close, appProps, loginProps }) {
   const {
+    modalType,
+    setToken,
+    setUser,
+  } = appProps;
+  const {    
     email,
     setEmail,
     username,
     setUsername,
     password,
-    setPassword,
-    modalType,
-    setToken,
-    setUser,
-  } = props;
+    setPassword
+  } = loginProps;
   const [passCheck, setPassCheck] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   if (!open) return null;

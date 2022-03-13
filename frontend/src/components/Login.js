@@ -3,10 +3,21 @@ import Button from './Button'
 import LoginModal from './LoginModal'
 
 function Login({props}) {
-    const {setEmail, setPassword, setUser, setToken, setResults, user} = props
+    const {setUser, setToken, setResults, user} = props
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [isOpen, setIsOpen] = useState(false)
     const [modalType, setModalType] = useState(null)
 
+    const loginProps = {
+        email,
+        setEmail,
+        username,
+        setUsername,
+        password,
+        setPassword
+    }
     const handleLogout = () => {
         setEmail('')
         setPassword('')
@@ -36,7 +47,7 @@ function Login({props}) {
             : <>
                 <Button className="login-btns" message="Sign In" onClick={loginClick} />
                 <Button className="login-btns" message="Register" onClick={registerClick} />
-                <LoginModal open={isOpen} close={()=>setIsOpen(false)} props={props} />
+                <LoginModal open={isOpen} close={()=>setIsOpen(false)} appProps={props} loginProps={loginProps} />
             </>
             }
       </div>
