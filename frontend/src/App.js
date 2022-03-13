@@ -8,26 +8,17 @@ import jwt_decode from 'jwt-decode';
 
 function App() {
   const [results, setResults] = useState(null);
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
-  // TRY TO MOVE THIS TO LOGIN COMPONENT
   const loginProps = {
-    email,
-    setEmail,
-    username,
-    setUsername,
-    password,
-    setPassword,
     setUser,
     setToken,
     user,
     setResults,
   };
 
+  // Check for saved login session and verifies that token is still valid
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedBookappUser');
 
@@ -37,7 +28,7 @@ function App() {
 
     let decodedToken = jwt_decode(user.token);
     let currentDate = new Date();
-    // Checks that token is still valid
+
     if (decodedToken.exp * 1000 > currentDate.getTime()) {
       setUser(user);
       setToken(user.token);
