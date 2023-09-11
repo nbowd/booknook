@@ -21,7 +21,7 @@ app.get('/api/books/', async (request, response) => {
     let subject = request.query.subject
     let amount = request.query.amount
 
-    // Generates randomized offset
+    // Generates randomized offsets
     let maxRange = amount - 6
     const result = Math.floor(Math.random() * (maxRange))
 
