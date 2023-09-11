@@ -47,29 +47,32 @@ app.get('/api/book/', async (request, response) => {
     let id = request.query.id
     let title = request.query.title
     let author = request.query.author
-
     let findDescription = () => {
         let res = axios.get(`http://www.openlibrary.org${id}`)
         return res
     }
-    let findLink = () => {
-        let res = axios.get(`http://cs361.calel.org/?title="${title}"&author="${author !== 'Unknown'? author: ''}"`)
-        return res
-    }
+    // let findLink = () => {
+    //     let res = axios.get(`http://cs361.calel.org/?title="${title}"&author="${author !== 'Unknown'? author: ''}"`)
+    //     return res
+    // }
     
     // Sends both promises concurrently, only proceeds when both have returned with a response
-    const [detailsResponse, linkResponse] = await Promise.all([findDescription(), findLink()])
-    
+    // const [detailsResponse, linkResponse] = await Promise.all([findDescription(), findLink()])
+    const detailsResponse = await findDescription();
     // Parsing teammates service response
-    let loadRequest = cheerio.load(linkResponse.data)
-    let trimRequest = loadRequest('p').text()
-    let parsed = JSON.parse(trimRequest)
+    // let loadRequest = cheerio.load(linkResponse.data)
+    // let trimRequest = loadRequest('p').text()
+    // let parsed = JSON.parse(trimRequest)
+    const idParse = id.split('/');
+    
+    const isbnResponse = await axios.get(`https://www.openlibrary.org/books/${idParse[idParse.length - 1]}.json`)
 
     let bookDetails = detailsResponse.data; 
-    let vendor = parsed.vendor
-    let cover = parsed.cover
-    if (vendor && cover) {response.json({bookDetails, vendor, cover})}
-    else {response.json({bookDetails, vendor: cover})}
+    // let vendor = parsed.vendor
+    // let cover = parsed.cover
+    response.json({bookDetails})
+    // if (vendor && cover) {response.json({bookDetails, vendor, cover})}
+    // else {response.json({bookDetails, vendor: cover})}
 })
 
 app.get('/api/saved', async (request, response) => {  
